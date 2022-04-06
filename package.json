@@ -1,5 +1,5 @@
 {
-  "name": "name-of-app",
+  "name": "typescript-react-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,6 +27,12 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
   },
   "browserslist": {
     "production": [
