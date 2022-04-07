@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { ChangeEvent, Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import { Monster } from './models/monsters'
 
 type RootState = {
+  searchString: string
   monsters: Monster[]
   time: Date
 }
@@ -13,6 +14,7 @@ class App extends Component<{}, RootState> {
     super(props)
 
     this.state = {
+      searchString: '',
       monsters: [],
       time: new Date()
     }
@@ -23,16 +25,22 @@ class App extends Component<{}, RootState> {
     this.setState({ time: new Date() })
   }
 
-  // Can react to the update when its made with function callback. Log will be updated state
-  updateMonsters(): void {
-    this.setState(
-      (state: RootState, props: any) => {
-        return { time: state.time }
-      },
-      () => {
-        console.log(this.state)
-      }
-    )
+  onSearchChange(event: ChangeEvent<HTMLInputElement>) {
+    this.setState({ searchString: event.target.value.toLowerCase() })
+  }
+
+  getFilteredMonsters() {
+    return this.state.monsters
+      .filter((m: Monster) =>
+        m.name.toLowerCase().includes(this.state.searchString)
+      )
+      .map((m: Monster) => {
+        return (
+          <div key={m.id}>
+            <h1> {m.name} </h1>
+          </div>
+        )
+      })
   }
 
   componentDidMount() {
@@ -47,20 +55,28 @@ class App extends Component<{}, RootState> {
   }
 
   render() {
+    const { monsters, time, searchString } = this.state
+    const { onSearchChange } = this
     return (
       <div className="App">
-        <header className="App-header">
-          {this.state.monsters.map((m: Monster) => {
+        <input
+          className="search-box"
+          type="search"
+          placeholder="search monsters ..."
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            onSearchChange(event)
+          }
+        />
+        {monsters
+          .filter((m: Monster) => m.name.toLowerCase().includes(searchString))
+          .map((m: Monster) => {
             return (
               <div key={m.id}>
                 <h1> {m.name} </h1>
               </div>
             )
           })}
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>The time is {this.state.time.toLocaleTimeString()}</p>
-          <button onClick={() => this.updateMonsters()}>Change Name</button>
-        </header>
+        <p>The time is {time.toLocaleTimeString()}</p>
       </div>
     )
   }

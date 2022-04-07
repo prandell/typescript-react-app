@@ -25,4 +25,4 @@
 
 ## Lifecycle Methods
 
-- `componentDidMount()`: Code that will run when component mounts (first time it gets rendered onto the DOM).
+- `componentDidMount()`: Code that will run when component mounts (first time it gets rendered onto the DOM). After `constructor()` and `render()`.
