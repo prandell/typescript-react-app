@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Component } from 'react'
+import { ChangeEvent } from 'react'
 import './search-box.styles.css'
 
 export type SearchBoxProps = {
@@ -7,26 +7,19 @@ export type SearchBoxProps = {
   placeholder?: string
 }
 
-export type SearchBoxState = {}
-
-class SearchBox extends Component<SearchBoxProps, SearchBoxState> {
-  constructor(props: SearchBoxProps) {
-    super(props)
-
-    this.state = {}
-  }
-
-  render() {
-    const { onChangeHandler, className, placeholder } = this.props
-    return (
-      <input
-        className={`search-box ${className}`}
-        type="search"
-        placeholder={placeholder ? placeholder : 'search ...'}
-        onChange={onChangeHandler}
-      />
-    )
-  }
+const SearchBox = ({
+  onChangeHandler,
+  className,
+  placeholder
+}: SearchBoxProps): JSX.Element => {
+  return (
+    <input
+      className={`search-box ${className}`}
+      type="search"
+      placeholder={placeholder ? placeholder : 'search ...'}
+      onChange={onChangeHandler}
+    />
+  )
 }
 
 export default SearchBox
