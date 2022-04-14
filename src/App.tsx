@@ -2,6 +2,8 @@ import React, { ChangeEvent, Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import { Monster } from './models/monsters'
+import CardList from './components/card-list/card-list.component'
+import SearchBox from './components/search-box/search-box.component'
 
 type RootState = {
   searchString: string
@@ -25,22 +27,8 @@ class App extends Component<{}, RootState> {
     this.setState({ time: new Date() })
   }
 
-  onSearchChange(event: ChangeEvent<HTMLInputElement>) {
+  onMonstersSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     this.setState({ searchString: event.target.value.toLowerCase() })
-  }
-
-  getFilteredMonsters() {
-    return this.state.monsters
-      .filter((m: Monster) =>
-        m.name.toLowerCase().includes(this.state.searchString)
-      )
-      .map((m: Monster) => {
-        return (
-          <div key={m.id}>
-            <h1> {m.name} </h1>
-          </div>
-        )
-      })
   }
 
   componentDidMount() {
@@ -55,27 +43,21 @@ class App extends Component<{}, RootState> {
   }
 
   render() {
-    const { monsters, time, searchString } = this.state
-    const { onSearchChange } = this
+    const { onMonstersSearchChange, state } = this
+    const { monsters, time, searchString } = state
     return (
       <div className="App">
-        <input
-          className="search-box"
-          type="search"
+        <h1 className="app-title">Monsters Rolodex</h1>
+        <SearchBox
+          onChangeHandler={onMonstersSearchChange}
           placeholder="search monsters ..."
-          onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            onSearchChange(event)
-          }
+          className="monsters-search-box"
         />
-        {monsters
-          .filter((m: Monster) => m.name.toLowerCase().includes(searchString))
-          .map((m: Monster) => {
-            return (
-              <div key={m.id}>
-                <h1> {m.name} </h1>
-              </div>
-            )
-          })}
+        <CardList
+          monsters={monsters.filter((m: Monster) =>
+            m.name.toLowerCase().includes(searchString)
+          )}
+        />
         <p>The time is {time.toLocaleTimeString()}</p>
       </div>
     )
