@@ -22,7 +22,9 @@
 
 - React batches (optimises) `setState` calls and therefore logging state may be delayed
 - When using array maps to render seperate html elements, make sure to include a `key`
+- Any CSS file imported throughout the application is present **everywhere** in the application. You have to be conscious of overlapping styles for the same className
 
 ## Lifecycle Methods
 
 - `componentDidMount()`: Code that will run when component mounts (first time it gets rendered onto the DOM). After `constructor()` and `render()`.
+- Props changing triggers a componenet re-render.
