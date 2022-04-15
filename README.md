@@ -1,9 +1,11 @@
 # Typescript-React-App
+
 This App was initialised using create-react-app's typescript template
 
 ## General Information
 
 This is a simple Typescript and React application that was made following the course here:
+
 - [Complete React Developer in 2022](https://deloittedevelopment.udemy.com/course/complete-react-developer-zero-to-mastery/)
 
 I modified it slightly to use typescript - but it is the base in which some of my other projects stand upon.
@@ -26,8 +28,8 @@ I modified it slightly to use typescript - but it is the base in which some of m
 - `testing-library/user-event`: ^13.5.0
 - `types/jest`: ^27.4.1
 - `types/node`: ^16.11.26
-- `types/react`: ^17.0.43
-- `types/react-dom`: ^17.0.14
+- `types/react`: ^18.0.5
+- `types/react-dom`: ^18.0.1
 - `react`: ^18.0.0`
 - `react-dom`: ^18.0.0`
 - `react-scripts`: 5.0.0`
@@ -45,6 +47,7 @@ cd ./typescript-react-app
 npm install
 npm run
 ```
+
 This will then launch the application within the native web browser on your computer.
 
 ### Build
