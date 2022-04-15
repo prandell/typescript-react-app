@@ -7,7 +7,8 @@ This App was initialised using create-react-app's typescript template
 This is a simple Typescript and React application that was made following the course here:
 
 - [Complete React Developer in 2022](https://deloittedevelopment.udemy.com/course/complete-react-developer-zero-to-mastery/)
-  I modified it slightly to use typescript - but it is the base in which some of my other projects stand upon.
+
+I modified it slightly to use typescript - but it is the base in which some of my other projects stand upon.
 
 ![alt-text](https://github.com/prandell/typescript-react-app/blob/master/imgs/screen-recording.gif)
 
