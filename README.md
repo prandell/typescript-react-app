@@ -10,7 +10,7 @@ This is a simple Typescript and React application that was made following the co
 
 I modified it slightly to use typescript - but it is the base in which some of my other projects stand upon.
 
-![alt-text](https://github.com/prandell/typescript-react-app/blob/master/imgs/screen-recording.gif)
+![alt-text](https://github.com/prandell/typescript-react-app/blob/main/imgs/screen-recording.gif)
 
 ## Table of Contents
 
